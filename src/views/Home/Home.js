@@ -34,7 +34,6 @@ function Home({ history }) {
         e.preventDefault()
         setOffset(offset + 20)
     }
-    console.log(offset)
 
     if (loading)
         return (
@@ -42,7 +41,7 @@ function Home({ history }) {
                 <h1>Loading...</h1>
             </div>
         )
-    if (error) console.log("erreur ", error)
+    if (error) console.log("Error ", error)
     return (
         <div className="home">
             <div className="home__container">

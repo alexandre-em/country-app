@@ -3,7 +3,7 @@ import { withRouter, useLocation, useParams } from 'react-router-dom';
 import { useQuery, gql } from '@apollo/client'
 import "./Detail.css"
 
-function Detail() {
+function Detail({ history }) {
     const { state } = useLocation();
     const { name, flag } = state;
     const { id } = useParams();
@@ -17,7 +17,6 @@ function Detail() {
                 area,
                 population,
                 nativeName,
-
                 demonym,
                 timezones{
                     name
@@ -46,12 +45,16 @@ function Detail() {
     })
 
     if (loading) return <p>Loading details...</p>
-    if (data) console.log(data.Country)
+    if (error) console.log("Error ", error)
     return (
         <div className="detail">
             <div className="detail-title">
-                <span>back</span>
-                <span>detail de {name}</span>
+                <div className="detail-back" onClick={() => history.push({
+                    pathname: `/`
+                })}>
+                    back
+                </div>
+                <span>Details of {name}</span>
             </div>
             <div className="detail__container">
                 <div className="detail__left">
@@ -60,14 +63,49 @@ function Detail() {
                     <h5>id: {id}</h5>
                 </div>
                 <div className="detail__descr">
-                    <p> <b>Capital</b>: {data.Country[0].capital}</p>
-                    <p> <b>Area</b>: {data.Country[0].area+""}</p>
-                    <p> <b>Population</b>: {data.Country[0].population} personne{data.Country[0].population > 1 ? "" : "s"}</p>
-                    <p> <b>Native name</b>: {data.Country[0].nativeName}</p>
-                    <p> <b>Demonym</b>: {data.Country[0].demonym} </p>
-                    <p> <b>Borders country</b>: {data.Country[0].borders} </p>
-                    <p> <b>Subregion</b>: {data.Country[0].subregion} </p>
-                    <p> <b>Regional blocs</b>: {data.Country[0].regionalBlocs} </p>
+                    <div className="detail__descr-item">
+                        <b>Native name</b> <span>{data.Country[0].nativeName}</span>
+                    </div>
+                    <div className="detail__descr-item">
+                        <b>Official languages</b> <span>{data.Country[0].officialLanguages.map(val => {
+                            return <span key={val.name}>{val.name}</span>
+                        })}</span>
+                    </div>
+                    <div className="detail__descr-item">
+                        <b>Demonym</b> <span>{data.Country[0].demonym}</span>
+                    </div>
+                    <div className="detail__descr-item">
+                        <b>Capital</b> <span>{data.Country[0].capital}</span>
+                    </div>
+                    <div className="detail__descr-item">
+                        <b>Regional blocs</b> <span>{data.Country[0].regionalBlocs.map(val => {
+                            return <span key={val.name}>{val.name}</span>
+                        })}</span>
+                    </div>
+                    <div className="detail__descr-item">
+                        <b>Area</b> <span>{data.Country[0].area + ""}</span>
+                    </div>
+                    <div className="detail__descr-item">
+                        <b>Timezones</b> <span>{data.Country[0].timezones.map(val => {
+                            return <span key={val.name}>{val.name}</span>
+                        })}</span>
+                    </div>
+                    <div className="detail__descr-item">
+                        <b>Currencies</b> <span>{data.Country[0].currencies.map(val => {
+                            return <span key={val.name}>{val.name} ({val.symbol})</span>
+                        })}</span>
+                    </div>
+                    <div className="detail__descr-item">
+                        <b>Population</b> <span>{data.Country[0].population} personne{data.Country[0].population < 2 ? "" : "s"}</span>
+                    </div>
+                    <div className="detail__descr-item">
+                        <b>Borders country</b> <span>{data.Country[0].borders.length > 0 ? data.Country[0].borders.map(val => {
+                            return <span key={val.name}>{val.name}</span>
+                        }) : "none"}</span>
+                    </div>
+                    <div className="detail__descr-item">
+                        <b>Subregion</b> <span>{data.Country[0].subregion.name}</span>
+                    </div>
                 </div>
             </div>
         </div>

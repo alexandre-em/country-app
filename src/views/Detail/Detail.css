@@ -6,8 +6,24 @@
     background-color: #ebebebeb;
 }
 
+.detail-title{
+    display: flex;
+    background-color: rgb(57, 64, 71);
+    color: #ebebebeb;
+    padding: 15px;
+}
+
+.detail-title > span {
+    font-weight: bolder;
+    text-transform: uppercase;
+}
+
+.detail-back{
+    padding-right: 20px;
+}
+
 .detail__container{
-    padding: 10px 20px 20px 20px;
+    padding: 20px;
     display: flex;
 }
 
@@ -15,8 +31,21 @@
     padding-right: 25px;
     display: flex;
     flex-direction: column;
+    color: rgb(57, 64, 71);
 }
 
 .detail__descr{
+    width: 100%;
+}
 
+.detail__descr-item{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0 10px 0;
+}
+.detail__descr-item > b{
+    color: rgb(57, 64, 71);
+}
+.detail__descr-item > span{
+    color: rgba(57, 64, 71, 0.5);
 }
