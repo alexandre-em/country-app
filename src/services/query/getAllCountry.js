@@ -1,9 +1,10 @@
 import { gql } from '@apollo/client'
 
 export const GET_COUNTRY = gql`
-    {
-        Country(first: 10){
+    query getCountry ($first: Int, $offset: Int){
+        Country(first: $first, offset: $offset){
             name,
+            _id,
             flag{
                 svgFile
             }

@@ -1,0 +1,22 @@
+.detail{
+    width:85%;
+    height: 70%;
+    overflow: auto;
+    overflow-wrap: break-word;
+    background-color: #ebebebeb;
+}
+
+.detail__container{
+    padding: 10px 20px 20px 20px;
+    display: flex;
+}
+
+.detail__left{
+    padding-right: 25px;
+    display: flex;
+    flex-direction: column;
+}
+
+.detail__descr{
+
+}

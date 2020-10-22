@@ -1,0 +1,38 @@
+.country__icon{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    cursor: pointer;
+    transition: 250ms;
+}
+.country__icon:hover,
+.country__icon:focus{
+    transform: scale(1.10);
+}
+
+.country__icon-img {
+    width: 100px;
+    height: 70px;
+    border-radius: .5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.country__icon-img > img:hover,
+.country__icon-img > img:focus{
+    box-shadow: 2px 0px 8px rgba(0,0,0,0.5);
+}
+
+.country__icon-img > img{
+    border-radius: .5rem;
+    width:100px;
+    transition: 250ms;
+}
+
+.country__name{
+    text-align: center;
+    max-width: 100px;
+    color: #3a4147;
+    text-shadow: 2px 0px 8px rgba(0,0,0,0.2);
+}

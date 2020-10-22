@@ -1,0 +1,45 @@
+.home{
+    width:85%;
+    height: 70%;
+    overflow: auto;
+    overflow-wrap: break-word;
+    background-color: #ebebebeb;
+}
+
+.home.loading{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(57, 64, 71);
+    text-shadow: 2px 0px 8px rgba(0,0,0,0.25);
+}
+
+.home__container{
+    padding: 10px 20px 20px 20px;
+}
+.home__title{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.home__title > h1{
+    color: rgb(57, 64, 71);
+    text-shadow: 2px 0px 8px rgba(0,0,0,0.25);
+}
+.home__title > p{
+    font-size: 10pt;
+    color: rgba(57, 64, 71, .25);
+    text-shadow: 2px 0px 8px rgba(0,0,0,0.1);
+}
+
+.home__country-grid{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.home__foot-btn{
+    display: flex;
+    justify-content: center;
+}

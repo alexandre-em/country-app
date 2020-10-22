@@ -1,17 +1,18 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import Home from './views/Home/Home';
 import Details from './views/Detail/Detail';
 import './App.css'
+import Header from './components/Header/Header';
 
 function App() {
   return (
     <Router>
-      <div>
-        {/* <Link to={'/country'} className="nav-link">About</Link> */}
+      <div className="app">
+        <Header />
         <Switch>
           <Route exact path="/" component={Home}/>
-          <Route path="/country" component={Details}/>
+          <Route path="/country/:id" component={Details}/>
         </Switch>
       </div>
     </Router>
