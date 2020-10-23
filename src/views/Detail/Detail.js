@@ -13,7 +13,12 @@ function Detail({ history }) {
         variables: { name: id },
     })
 
-    if (loading) return <div className="detail">Loading details...</div>
+    if (loading)
+        return (
+            <div className="home loading">
+                <h1>Loading...</h1>
+            </div>
+        )
     if (error) console.log("Error ", error)
     return (
         <div className="detail">
