@@ -5,13 +5,18 @@ import { GET_COUNTRY } from '../../services/query/getAllCountry'
 
 import './Home.css'
 import IconCountry from '../../components/IconCountry/IconCountry';
+import { ArrowBack, ArrowForward } from '@material-ui/icons';
+import { IconButton } from '@material-ui/core';
+import ButtonNav from '../../components/ButtonNav';
 
 function Home({ history }) {
+    const totalCountryPage = 50
+    const totalCountry = 250
     const [offset, setOffset] = useState(0)
     const { loading, error, data } = useQuery(GET_COUNTRY,
         {
             variables: {
-                first: 50,
+                first: totalCountryPage,
                 offset: offset
             }
         });
@@ -28,11 +33,11 @@ function Home({ history }) {
 
     const getPrev = (e) => {
         e.preventDefault()
-        setOffset(offset - 20)
+        setOffset(offset - totalCountryPage)
     }
     const getNext = (e) => {
         e.preventDefault()
-        setOffset(offset + 20)
+        setOffset(offset + totalCountryPage)
     }
 
     if (loading)
@@ -47,19 +52,13 @@ function Home({ history }) {
             <div className="home__container">
                 <div className="home__title">
                     <h1>Country</h1>
-                    <div className="home__title-btn">
-                        {offset <= 0 ? "" : <button onClick={getPrev}>prev</button>}
-                        {offset >= 250-50 ? "" : <button onClick={getNext}>next</button>}
-                    </div>
+                    <ButtonNav classN="home__title-btn" offset={offset} getNext={getNext} getPrev={getPrev} totalCountryPage={totalCountryPage} totalCountry={totalCountry} />
                 </div>
                 <div className="home__country-grid">
                     {countries}
                 </div>
+                <ButtonNav classN="home__foot-btn" offset={offset} getNext={getNext} getPrev={getPrev} totalCountryPage={totalCountryPage} totalCountry={totalCountry} />
 
-                <div className="home__foot-btn">
-                    {offset <= 0 ? "" : <button onClick={getPrev}>prev</button>}
-                    {offset >= 250-50 ? "" : <button onClick={getNext}>next</button>}
-                </div>
             </div>
         </div>
     )

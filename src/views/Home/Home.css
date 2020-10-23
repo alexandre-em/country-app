@@ -1,6 +1,6 @@
 .home{
-    width:85%;
-    height: 70%;
+    width:100%;
+    height: 100%;
     overflow: auto;
     overflow-wrap: break-word;
     background-color: #ebebebeb;
@@ -42,4 +42,5 @@
 .home__foot-btn{
     display: flex;
     justify-content: center;
+    align-items: center;
 }

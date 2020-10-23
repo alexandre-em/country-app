@@ -2,15 +2,11 @@ import React from 'react'
 import "./IconCountry.css"
 
 
-function IconCountry({ country, history, flag, idCountry }) {
+function IconCountry({ country, history, flag }) {
     return (
         <div className="country__icon"
             onClick={() => history.push({
-                pathname: `/country/${idCountry}`,
-                state: {
-                    name: country,
-                    flag: flag
-                }
+                pathname: `/country/${country}`
             })}>
             <div className="country__icon-img">
                 <img src={flag} />
