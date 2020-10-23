@@ -26,7 +26,7 @@ function Header() {
     return (
         <div className="header">
             <div className="header__title">
-                <h1>Country App</h1>
+                <h1 onClick={( e => history.push({ pathname: "/" }) )}>Country App</h1>
                 <h4>A wiki of all country in the world</h4>
                 <div className="header-searchbar">
                     <form onSubmit={ e => handleSubmit(e)}>
