@@ -19,7 +19,13 @@ function Detail({ history }) {
                 <h1>Loading...</h1>
             </div>
         )
-    if (error) console.log("Error ", error)
+    if ((data.Country && data.Country.length===0) || error){
+        console.log(error)
+        return (
+            <div className="home loading">
+                <h1>Error: {error? error:"Not found..."}</h1>
+            </div>
+        )}
     return (
         <div className="detail">
             <div className="detail-title">
@@ -32,7 +38,7 @@ function Detail({ history }) {
             </div>
             <div className="detail__container">
                 <div className="detail__top">
-                    <img src={data.Country[0].flag.svgFile} width="250px" />
+                    <img src={data.Country[0].flag.svgFile} alt="" width="250px" />
                     <h1>{id}</h1>
                     <h5>id: {data.Country[0]._id}</h5>
                 </div>
@@ -44,10 +50,10 @@ function Detail({ history }) {
                         })} />
                     <DetailItem itemName={"Demonym"} data={data.Country[0].demonym} />
                     <DetailItem itemName={"Capital"} data={data.Country[0].capital} />
-                    <DetailItem itemName={"Regional blocs"} data={ data.Country[0].regionalBlocs?
-                        data.Country[0].regionalBlocs.map(val => { 
+                    <DetailItem itemName={"Regional blocs"} data={data.Country[0].regionalBlocs ?
+                        data.Country[0].regionalBlocs.map(val => {
                             return <div className="detail__list-item" key={val.name}>{val.name}</div>
-                        }):"none"} />
+                        }) : "none"} />
                     <DetailItem itemName={"Area"} data={data.Country[0].area + ""} />
                     <DetailItem itemName={"Timezones"} data={
                         data.Country[0].timezones.map(val => {

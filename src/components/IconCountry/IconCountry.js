@@ -9,7 +9,7 @@ function IconCountry({ country, history, flag }) {
                 pathname: `/country/${country}`
             })}>
             <div className="country__icon-img">
-                <img src={flag} />
+                <img src={flag} alt=""/>
             </div>
             <div className="country__name">
                 <span>{country}</span>

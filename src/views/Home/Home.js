@@ -5,8 +5,6 @@ import { GET_COUNTRY } from '../../services/query/getAllCountry'
 
 import './Home.css'
 import IconCountry from '../../components/IconCountry/IconCountry';
-import { ArrowBack, ArrowForward } from '@material-ui/icons';
-import { IconButton } from '@material-ui/core';
 import ButtonNav from '../../components/ButtonNav';
 
 function Home({ history }) {
@@ -28,7 +26,7 @@ function Home({ history }) {
                 return <IconCountry country={country.name} flag={country.flag.svgFile} idCountry={country._id} history={history} />
             }))
         }
-
+        // eslint-disable-next-line
     }, [data])
 
     const getPrev = (e) => {
@@ -46,7 +44,12 @@ function Home({ history }) {
                 <h1>Loading...</h1>
             </div>
         )
-    if (error) console.log("Error ", error)
+    if (error)
+        return (
+            <div className="home loading">
+                <h1>Error: {error? error:"Not found..."}</h1>
+            </div>
+        )
     return (
         <div className="home">
             <div className="home__container">
